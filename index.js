@@ -57,7 +57,6 @@ const dos = async () => {
 
 
 dos().then(async (a) => {
-	console.log(a)
 	const res = await fetch('https://www.jsonstore.io/aae418df7ce1a10c4012355d4764eec09cc54dc2c084d138d7746eb158814ee2', {
 		method: 'POST',
     headers: {
@@ -69,3 +68,5 @@ dos().then(async (a) => {
 	const data = await res.json()
 	console.log(data)
 })
+
+export default dos

@@ -2,6 +2,8 @@ import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
 const axios = require('axios')
 
+import worker from '../../index.js'
+
 import './style.css';
 
 class App extends Component {
@@ -24,6 +26,8 @@ class App extends Component {
 					data: 'Error loading data..!'
 				})
 			})
+			worker()
+			.catch(e => e)
 	}
 
 	render() {
