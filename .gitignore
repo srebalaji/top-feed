@@ -64,3 +64,6 @@ dist/
 
 # dotenv environment variables file
 .env
+
+# mac
+.DS_Store
