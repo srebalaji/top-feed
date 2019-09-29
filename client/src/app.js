@@ -101,7 +101,7 @@ class App extends Component {
 						{msg}
 					</div>
 				</div>
-				
+				<p className="py-1"></p>
 			</div>
 		)
 	}
