@@ -88,9 +88,9 @@ class App extends Component {
 			})
 		}
 		return (
-			<div className="flex flex-col mt-12">
-				<div className="flex">
-					<div className="ml-10 px-8">
+			<div className="mt-12">
+				<div className="grid grid-cols-1 sm:grid-cols-8">
+					<div className="col-span-2 ml-10 px-8">
 						<p className="text-3xl font-light" style={{color: '#f56565'}}>Top Feed</p>
 						<p className="font-light">Top stories sorted by votes.</p>
 						<hr className="w-1/4 my-3" style={{'border-width': '1.5px'}}/>
@@ -105,7 +105,7 @@ class App extends Component {
 							<a href="https://forms.gle/ra1aBY5fLmbq4brb8" target="_blank" className="underline" style={{color: '#f56565', cursor: 'pointer'}}>Subscribe to our <br/> newsletter</a>
 						</div>
 					</div>
-					<div className="flex flex-col mr-auto w-3/5 p-2">
+					<div className="col-span-5 sm:mt-0 mt-6 px-4 sm:px-0">
 						{msg}
 					</div>
 				</div>
