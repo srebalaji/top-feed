@@ -70,7 +70,7 @@ dos().then(async (a) => {
     body: JSON.stringify(a)
 	})
 	const data = await res.json()
-	console.log(` HN - ${JSON.stringify(response)}`)
+	console.log(` HN - ${JSON.stringify(res)}`)
 })
 
 
@@ -139,5 +139,74 @@ const github = async () => {
 	console.log(` Gtihub - ${JSON.stringify(response)}`)
 }
 
+const devto = async () => {
+	const res = await fetch('https://dev.to/api/articles?top=1', {
+		method: 'GET'
+	})
+	let data = await res.json()
+
+	data = data.map((a) => {
+		return {
+			title: `${a.title}`,
+			url: a.url,
+			score: a.positive_reactions_count
+		}
+	})
+	.sort((a, b) => {
+		return a.score > b.score ? -1 : a.score < b.score ? 1 : 0
+	})
+	.slice(0, 10)
+
+	const req = await fetch('https://www.jsonstore.io/3d988a0c3bc8e99aa85d1c08190ea594105620f2a233753f8f16560b0cd751b6', {
+		method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+	})
+	const response = await req.json()
+	console.log(` Dev to - ${JSON.stringify(response)}`)
+}
+
+const reddit_programming = async () => {
+	const res = await fetch('https://www.reddit.com/r/programming/top.json', {
+		method: 'GET'
+	})
+	let data = await res.json()
+	data = data['data']['children'].map((a) => {
+		a = a.data
+		return {
+			title: `${a.title}`,
+			url: a.url,
+			score: a.score
+		}
+	})
+	.sort((a, b) => {
+		return a.score > b.score ? -1 : a.score < b.score ? 1 : 0
+	})
+	.slice(0, 10)
+
+	const req = await fetch('https://www.jsonstore.io/a23565884900f35054c53f70c8522e63a91166754a4f2b5c58ac93e3f6a56820', {
+		method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+	})
+	const response = await req.json()
+	console.log(` r/programming - ${JSON.stringify(response)}`)
+}
+
 productHunt()
 github()
+devto()
+reddit_programming()
+
+
+// npm install tailwindcss autoprefixer postcss-cli mini-css-extract-plugin postcss-loader --save-dev
+
+// https://jsonbox.io/box_a3a4537499ce94d8c979
+
+// https://www.jsonstore.io/aae418df7ce1a10c4012355d4764eec09cc54dc2c084d138d7746eb158814ee2
