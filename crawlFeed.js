@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const fetch = require('node-fetch')
 const moment = require('moment')
 
@@ -79,7 +81,7 @@ const productHunt = async () => {
 	const res = await fetch('https://api.producthunt.com/v1/posts', {
 		method: 'GET',
 		headers: {
-			Authorization: 'Bearer -2tf26gLpVVgCx2Bi9OKI2L8hROOD4N8fKYxmEnlcHk',
+			Authorization: `Bearer ${process.env.phKey}`,
 			Accept: 'application/json',
 			'Content-Type': 'application/json',
 			Host: 'api.producthunt.com'
